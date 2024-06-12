@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { fabric } from 'fabric';
 import { ActionIcon, ColorInput, Container, Slider } from '@mantine/core';
-import { IconBrush, IconCircleFilled, IconTrash } from '@tabler/icons-react';
+import { IconCircleFilled, IconTrash } from '@tabler/icons-react';
 
 const defaultCanvas = {
   brushSize: 5,
@@ -38,13 +38,18 @@ const DrawingApp = () => {
     setCanvasSettings({ ...canvasSettings, brushColor: value})
   }
 
+  const handleBackgroundColorChange = (value) => {
+    canvas.backgroundColor = value
+    setCanvasSettings({ ...canvasSettings, backgroundColor: value})
+  }
+
 
   return (
     <Container pt={100}>
-      <div style={{backgroundColor: "#fff"}}>
+      <div style={{backgroundColor: canvasSettings.backgroundColor}}>
         <canvas ref={canvasRef} height={600} width={928}></canvas>
       </div>
-      <div style={{display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between"}}>
+      <div style={{display: "flex", flexDirection: "row", alignItems: "center"}}>
         <div style={{display: "flex", flexDirection: "row", alignItems: "center", gap: "2%", flexGrow: 1}}>
           <div>
             <label>Brush Size</label>
@@ -63,15 +68,16 @@ const DrawingApp = () => {
           <div>
             <ColorInput
               label="Brush Color"
-              placeholder="Input placeholder"
               value={canvasSettings.brushColor}
               onChange={handleBrushColorChange}
             />
           </div>
           <div>
-            <ActionIcon size={"xl"}>
-              <IconBrush size={30} />
-            </ActionIcon>
+            <ColorInput
+              label="Background Color"
+              value={canvasSettings.backgroundColor}
+              onChange={handleBackgroundColorChange}
+            />
           </div>
         </div>
         <ActionIcon size={"xl"} onClick={() => canvas.clear()}>
