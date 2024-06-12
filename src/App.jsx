@@ -5,6 +5,7 @@ import { AppShell, MantineProvider, createTheme } from '@mantine/core';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import { Routes, Route } from 'react-router-dom';
+import Desktop from './Desktop';
 
 function App() {
 
@@ -20,7 +21,7 @@ function App() {
         </AppShell.Header>
         <AppShell.Main>
           <Routes>
-            <Route path='/' element={<DrawingApp />} />
+            <Route path='/' element={<Desktop />} />
             <Route path='/draw' element={<DrawingApp />} />
           </Routes>
         </AppShell.Main>

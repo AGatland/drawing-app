@@ -15,6 +15,7 @@ export default function Header() {
           <img src={colorScheme == "dark" ? assetLogoDark : assetLogoLight} alt="Logo" className={classes.logo} />
           <Group gap={5} visibleFrom="sm">
             <Link to={"/"} className={classes.link}>Desktop</Link>
+            <Link to={"/drawings"} className={classes.link}>Drawings</Link>
             <Link to={"/draw"} className={classes.link}>Draw</Link>
           </Group>
           <Group>
